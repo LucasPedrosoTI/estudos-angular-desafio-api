@@ -1,13 +1,27 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { SpinnerService } from './spinner.service';
 
 @Component({
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.css'],
+  styles: [],
 })
-export class SpinnerComponent implements OnInit {
-  @Input() message = 'Loading...';
-  constructor() {}
+export class SpinnerComponent {
+  public showSpinner = false;
 
-  ngOnInit(): void {}
+  constructor(
+    private spinnerService: SpinnerService,
+    private cdRef: ChangeDetectorRef
+  ) {}
+
+  ngOnInit() {
+    this.init();
+  }
+
+  init() {
+    this.spinnerService.getSpinnerObserver().subscribe((status) => {
+      this.showSpinner = status === 'start';
+      this.cdRef.detectChanges();
+    });
+  }
 }

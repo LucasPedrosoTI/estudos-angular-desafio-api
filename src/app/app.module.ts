@@ -7,17 +7,28 @@ import { HomeComponent } from './navigation/home/home.component';
 import { MenuComponent } from './navigation/menu/menu.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProdutoService } from './service/ProdutoService';
+import { ProdutoService } from './service/produto.service';
 import { APP_BASE_HREF, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.component';
+import { ProdutoDetalheComponent } from './produtos/produto-detalhe/produto-detalhe.component';
 import { SpinnerComponent } from './util/spinner/spinner.component';
+import { httpInterceptorProviders } from './http-interceptor';
 
 registerLocaleData(localePt);
 @NgModule({
-  declarations: [AppComponent, HomeComponent, MenuComponent, FooterComponent, ListaProdutoComponent, SpinnerComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    MenuComponent,
+    FooterComponent,
+    ListaProdutoComponent,
+    ProdutoDetalheComponent,
+    SpinnerComponent,
+  ],
   imports: [HttpClientModule, BrowserModule, AppRoutingModule],
   providers: [
+    httpInterceptorProviders,
     ProdutoService,
     { provide: APP_BASE_HREF, useValue: '/' },
     { provide: LOCALE_ID, useValue: 'pt-BR' },
