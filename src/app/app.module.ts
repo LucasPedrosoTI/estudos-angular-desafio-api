@@ -14,6 +14,8 @@ import { ListaProdutoComponent } from './produtos/lista-produto/lista-produto.co
 import { ProdutoDetalheComponent } from './produtos/produto-detalhe/produto-detalhe.component';
 import { SpinnerComponent } from './util/spinner/spinner.component';
 import { httpInterceptorProviders } from './http-interceptor';
+import { NovoProdutoComponent } from './produtos/novo-produto/novo-produto.component';
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localePt);
 @NgModule({
@@ -25,8 +27,9 @@ registerLocaleData(localePt);
     ListaProdutoComponent,
     ProdutoDetalheComponent,
     SpinnerComponent,
+    NovoProdutoComponent,
   ],
-  imports: [HttpClientModule, BrowserModule, AppRoutingModule],
+  imports: [HttpClientModule, BrowserModule, AppRoutingModule, FormsModule],
   providers: [
     httpInterceptorProviders,
     ProdutoService,

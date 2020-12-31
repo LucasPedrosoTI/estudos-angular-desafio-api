@@ -15,22 +15,22 @@ export class FornecedorService {
   obterFornecedores(): Observable<Page<Fornecedor>> {
     return this.http.get<Page<Fornecedor>>(
       `${Constants.prodUrl}/fornecedores`,
-      {
-        headers: Constants.headers,
-      }
+      Constants.options
     );
   }
 
   obterFornecedor(id: number): Observable<Fornecedor> {
     return this.http.get<Fornecedor>(
       `${Constants.prodUrl}/fornecedores/${id}`,
-      {
-        headers: Constants.headers,
-      }
+      Constants.options
     );
   }
 
   setFornecedorNome({ fornecedor }: Produto) {
+    if (fornecedor.id == null) {
+      throw new Error('Fornecedor inválido');
+    }
+
     this.obterFornecedor(fornecedor.id).subscribe(
       ({ nome }) => {
         fornecedor.nome = nome;

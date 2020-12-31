@@ -1,7 +1,7 @@
 import { Fornecedor } from './Fornecedor';
 
 export interface Produto {
-  id: number;
+  id: number | null;
   categoria: string;
   codigoProduto: string;
   imagem: string;
@@ -9,6 +9,6 @@ export interface Produto {
   promocao: boolean;
   quantidade: number;
   valor: number;
-  valorPromo: number;
+  valorPromo: number | null;
   fornecedor: Fornecedor;
 }
