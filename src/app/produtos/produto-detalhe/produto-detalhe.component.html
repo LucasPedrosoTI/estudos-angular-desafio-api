@@ -6,7 +6,7 @@
 
     <div class="produto-info col-md-7">
       <h2 class="mb-5">
-        <strong>{{ produto.nome }}</strong>
+        <strong>{{ produto.fornecedor.nome }} {{ produto.nome }}</strong>
       </h2>
 
       <div *ngIf="produto.promocao">
@@ -18,7 +18,8 @@
                 {{ produto.valor | currency: "BRL" }}
               </del>
             </small>
-            <br />
+          </h3>
+          <h3>
             Por:
             <span class="badge badge-success">
               {{ produto.valorPromo | currency: "BRL" }}
@@ -52,7 +53,7 @@
           <td>
             <strong>Fornecedor</strong>
           </td>
-          <td></td>
+          <td>{{ produto.fornecedor.nome }}</td>
         </tr>
         <tr>
           <td>

@@ -14,10 +14,14 @@
           />
         </a>
         <div class="card-body">
-          <h5 class="card-title">{{ produto.nome }}</h5>
+          <h5 class="card-title">
+            {{ produto.fornecedor.nome }} {{ produto.nome }}
+          </h5>
 
           <div [ngSwitch]="produto.promocao">
-            <div *ngSwitchCase="true">Promoção!</div>
+            <div *ngSwitchCase="true">
+              <span class="badge badge-success">Promoção!</span>
+            </div>
             <div *ngSwitchDefault>Por apenas:</div>
           </div>
 
